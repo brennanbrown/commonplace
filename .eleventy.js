@@ -92,8 +92,9 @@ module.exports = function(eleventyConfig) {
       .getFilteredByGlob("src/posts/**/*.md")
       .sort((a, b) => {
         // Parse dates as strings to avoid timezone issues
-        return String(b.data.date).localeCompare(String(a.data.date));
+        return String(a.data.date).localeCompare(String(b.data.date));
       })
+      .reverse()
       .slice(0, 1);
   });
   

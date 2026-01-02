@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Daily gratitude and commonplace log",
   "scripts": {
-    "dev": "eleventy --serve",
+    "dev": "eleventy && eleventy --serve",
     "build": "eleventy",
     "clean": "rm -rf _site"
   },
