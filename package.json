@@ -1,0 +1,13 @@
+{
+  "name": "commonplace",
+  "version": "1.0.0",
+  "description": "Daily gratitude and commonplace log",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
