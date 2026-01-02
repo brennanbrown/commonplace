@@ -1,0 +1,77 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <updated>{{ collections.latest[0].data.date | isoDate }}</updated>
+  <id>{{ site.url }}/</id>
+  <author>
+    <name>Brennan Brown</name>
+  </author>
+  {% for post in collections.all | reverse %}
+{% if loop.index <= 20 %}
+  {% if post.data.date %}
+  <entry>
+    <title>{{ post.data.date | readableDate }}</title>
+    <link href="{{ site.url }}{{ post.url }}"/>
+    <updated>{{ post.data.date | isoDate }}</updated>
+    <id>{{ site.url }}{{ post.url }}</id>
+    <content type="html"><![CDATA[
+      {% if post.data.gratitude %}<p><strong>🙏 Gratitude:</strong> {{ post.data.gratitude }}</p>{% endif %}
+      {% if post.data.books %}
+      <p><strong>📚 Books:</strong></p>
+      <ul>
+      {% for book in post.data.books %}
+        <li><cite>{{ book.title }}</cite> by {{ book.author }} ({{ book.status }}{% if book.pages %}, p. {{ book.pages }}{% endif %})</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% if post.data.videos %}
+      <p><strong>📺 Videos:</strong></p>
+      <ul>
+      {% for video in post.data.videos %}
+        <li><a href="{{ video.url }}">{{ video.title }}</a> by {{ video.creator }} ({{ video.duration }})</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% if post.data.music %}
+      <p><strong>🎵 Music:</strong></p>
+      <ul>
+      {% for track in post.data.music %}
+        <li>{{ track.title }} — {{ track.artist }} ({{ track.album }}{% if track.plays %}, ×{{ track.plays }}{% endif %})</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% if post.data.locations %}
+      <p><strong>📍 Locations:</strong></p>
+      <ul>
+      {% for location in post.data.locations %}
+        <li><strong>{{ location.name }}</strong> ({{ location.city }}){% if location.notes %} — {{ location.notes }}{% endif %}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% if post.data.quotes %}
+      <p><strong>💬 Quotes:</strong></p>
+      {% for quote in post.data.quotes %}
+      <blockquote>"{{ quote.text }}" — {{ quote.author }}, <cite>{{ quote.source }}</cite></blockquote>
+      {% endfor %}
+      {% endif %}
+      {% if post.data.notes %}
+      <p><strong>📝 Notes:</strong></p>
+      <ul>
+      {% for note in post.data.notes %}
+        <li>{{ note }}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    ]]></content>
+  </entry>
+  {% endif %}
+{% endif %}
+{% endfor %}
+</feed>
