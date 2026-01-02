@@ -1,0 +1,115 @@
+---
+layout: base.njk
+---
+
+{% if collections.latest %}
+  {% set post = collections.latest[0] %}
+  <article class="post">
+    <time class="post-date"><a href="/{{ post.fileSlug }}/">{{ post.data.date | readableDate }}</a></time>
+    
+    {% if post.data.gratitude %}
+    <div class="post-gratitude" data-type="gratitude">
+      <span class="icon">🙏</span>
+      <p>{{ post.data.gratitude }}</p>
+    </div>
+    {% endif %}
+    
+    {% if post.data.books %}
+    <div class="post-books" data-type="books">
+      <span class="icon">📚</span>
+      <ul>
+        {% for book in post.data.books %}
+        <li>
+          <cite>{{ book.title }}</cite> by {{ book.author }}
+          <span class="meta">({{ book.status }}{% if book.pages %}, p. {{ book.pages }}{% endif %})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% if post.data.videos %}
+    <div class="post-videos" data-type="videos">
+      <span class="icon">📺</span>
+      <ul>
+        {% for video in post.data.videos %}
+        <li>
+          <a href="{{ video.url }}">{{ video.title }}</a> by {{ video.creator }}
+          <span class="meta">({{ video.duration }})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% if post.data.music %}
+    <div class="post-music" data-type="music">
+      <span class="icon">🎵</span>
+      <ul>
+        {% for track in post.data.music %}
+        <li>
+          {{ track.title }} — {{ track.artist }}
+          <span class="meta">({{ track.album }}{% if track.plays %}, ×{{ track.plays }}{% endif %})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% if post.data.locations %}
+    <div class="post-locations" data-type="locations">
+      <span class="icon">📍</span>
+      <ul>
+        {% for location in post.data.locations %}
+        <li>
+          <strong>{{ location.name }}</strong> ({{ location.city }})
+          {% if location.notes %}<span class="notes">{{ location.notes }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% if post.data.quotes %}
+    <div class="post-quotes" data-type="quotes">
+      <span class="icon">💬</span>
+      {% for quote in post.data.quotes %}
+      <blockquote>
+        <p>"{{ quote.text }}"</p>
+        <footer>— {{ quote.author }}, <cite>{{ quote.source }}</cite></footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if post.data.notes %}
+    <div class="post-notes" data-type="notes">
+      <span class="icon">📝</span>
+      <ul>
+        {% for note in post.data.notes %}
+        <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </article>
+{% endif %}
+
+{% for month in collections.byMonth %}
+  <section class="archive-month">
+    <h2>{{ month.month }} {{ month.year }}</h2>
+    {% if month.posts %}
+    <ul class="archive-list">
+      {% for post in month.posts %}
+        {% if not (collections.latest and post.data.date == collections.latest[0].data.date) %}
+          <li>
+            <a href="/{{ post.fileSlug }}/">
+              <span class="archive-date">{{ post.data.date | date("%d %b") }}</span>{% if post.data.gratitude %}: {{ post.data.gratitude }}{% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+{% endfor %}

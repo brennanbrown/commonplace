@@ -1,0 +1,95 @@
+---
+layout: base.njk
+---
+
+<article class="post">
+  <time class="post-date">{{ date | readableDate }}</time>
+  
+  {% if gratitude %}
+  <div class="post-gratitude" data-type="gratitude">
+    <span class="icon">🙏</span>
+    <p>{{ gratitude }}</p>
+  </div>
+  {% endif %}
+  
+  {% if books %}
+  <div class="post-books" data-type="books">
+    <span class="icon">📚</span>
+    <ul>
+      {% for book in books %}
+      <li>
+        <cite>{{ book.title }}</cite> by {{ book.author }}
+        <span class="meta">({{ book.status }}{% if book.pages %}, p. {{ book.pages }}{% endif %})</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if videos %}
+  <div class="post-videos" data-type="videos">
+    <span class="icon">📺</span>
+    <ul>
+      {% for video in videos %}
+      <li>
+        <a href="{{ video.url }}">{{ video.title }}</a> by {{ video.creator }}
+        <span class="meta">({{ video.duration }})</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if music %}
+  <div class="post-music" data-type="music">
+    <span class="icon">🎵</span>
+    <ul>
+      {% for track in music %}
+      <li>
+        {{ track.title }} — {{ track.artist }}
+        <span class="meta">({{ track.album }}{% if track.plays %}, ×{{ track.plays }}{% endif %})</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if locations %}
+  <div class="post-locations" data-type="locations">
+    <span class="icon">📍</span>
+    <ul>
+      {% for location in locations %}
+      <li>
+        <strong>{{ location.name }}</strong> ({{ location.city }})
+        {% if location.notes %}<span class="notes">{{ location.notes }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  {% if quotes %}
+  <div class="post-quotes" data-type="quotes">
+    <span class="icon">💬</span>
+    {% for quote in quotes %}
+    <blockquote>
+      <p>"{{ quote.text }}"</p>
+      <footer>— {{ quote.author }}, <cite>{{ quote.source }}</cite></footer>
+    </blockquote>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% if notes %}
+  <div class="post-notes" data-type="notes">
+    <span class="icon">📝</span>
+    <ul>
+      {% for note in notes %}
+      <li>{{ note }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</article>
+
+<p><a href="/">← Back to homepage</a></p>

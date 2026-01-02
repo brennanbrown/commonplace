@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{% if title %}{{ title }} - {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="twitter:title" content="{% if title %}{{ title }} - {% endif %}{{ site.title }}">
+  <meta property="twitter:description" content="{{ site.description }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" sizes="any">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="/css/style.css?v=2025010201">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  
+  <div class="container">
+    <header>
+      <a href="/" class="header-link">
+        <h1>{{ site.title }}</h1>
+        <div class="subtitle">{{ site.url }}</div>
+      </a>
+    </header>
+    
+    <main id="main">
+      {{ content | safe }}
+    </main>
+    
+    <hr>
+    
+    <footer>
+      <p>
+        <a href="https://github.com/brennanbrown/commonplace">MIT License 2026</a> by 
+        <a href="https://brennan.day">Brennan Kenneth Brown</a>
+      </p>
+      <p>
+        A 🍓 <a href="https://berryhouse.ca">Berry House</a> project
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
