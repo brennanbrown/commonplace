@@ -8,7 +8,7 @@
 
 ## 📖 About
 
-This is a brutally simple static site generator that helps you maintain a daily practice of gratitude and commonplace bookkeeping. It's designed to be:
+🏵️ This is a brutally simple 11ty microblog that helps you maintain a daily practice of gratitude and commonplace bookkeeping. It's designed to be:
 
 - **Minimal**: No JavaScript frameworks, no CSS preprocessors, no build complexity
 - **Fast**: Static HTML, minimal CSS, instant loads
