@@ -91,10 +91,11 @@ module.exports = function(eleventyConfig) {
     return collectionApi
       .getFilteredByGlob("src/posts/**/*.md")
       .sort((a, b) => {
-        // Parse dates as strings to avoid timezone issues
-        return String(a.data.date).localeCompare(String(b.data.date));
+        // Parse dates properly to avoid timezone issues
+        const dateA = new Date(a.data.date + 'T00:00:00Z');
+        const dateB = new Date(b.data.date + 'T00:00:00Z');
+        return dateB - dateA; // Sort descending (newest first)
       })
-      .reverse()
       .slice(0, 1);
   });
   
