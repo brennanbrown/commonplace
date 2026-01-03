@@ -1,19 +1,28 @@
+/* ===================================
+   CSS Custom Properties (Variables)
+   =================================== */
 :root {
+  /* Base Colors */
   --bg-primary: #282828;
   --bg-secondary: #3c3836;
   --fg-primary: #ebdbb2;
   --fg-dim: #a89984;
+  
+  /* Content Type Accents */
   --accent-gratitude: #fabd2f;
+  --accent-weather: #7daea3;
+  --accent-work: #d79921;
   --accent-books: #83a598;
   --accent-videos: #d3869b;
   --accent-music: #8ec07c;
   --accent-locations: #fe8019;
   --accent-quotes: #b8bb26;
   --accent-notes: #fb4934;
-  --accent-weather: #7daea3;
-  --accent-work: #d79921;
 }
 
+/* ===================================
+   Base Styles & Reset
+   =================================== */
 * {
   margin: 0;
   padding: 0;
@@ -29,13 +38,17 @@ body {
   padding: 20px;
 }
 
-/* Fixed width container */
+/* ===================================
+   Layout Components
+   =================================== */
 .container {
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Header */
+/* ===================================
+   Header
+   =================================== */
 header {
   border-bottom: 2px solid var(--fg-dim);
   padding-bottom: 1rem;
@@ -58,11 +71,14 @@ h1 {
   display: inline-block;
 }
 
-.header-link:hover h1, footer a:hover{
+.header-link:hover h1,
+footer a:hover {
   color: var(--accent-notes);
 }
 
-/* Post styles */
+/* ===================================
+   Post Styles
+   =================================== */
 .post {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
@@ -73,6 +89,7 @@ h1 {
   display: block;
   color: var(--fg-dim);
   font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
 
 .post-date a {
@@ -84,10 +101,6 @@ h1 {
   text-decoration: underline;
 }
 
-.post-date {
-  margin-bottom: 1rem;
-}
-
 .post > div {
   margin-bottom: 1.5rem;
 }
@@ -97,18 +110,76 @@ h1 {
   margin-right: 0.5rem;
 }
 
-/* Type-specific colors */
-[data-type="gratitude"] { border-left: 3px solid var(--accent-gratitude); padding-left: 1rem; }
-[data-type="books"] { border-left: 3px solid var(--accent-books); padding-left: 1rem; }
-[data-type="videos"] { border-left: 3px solid var(--accent-videos); padding-left: 1rem; }
-[data-type="music"] { border-left: 3px solid var(--accent-music); padding-left: 1rem; }
-[data-type="locations"] { border-left: 3px solid var(--accent-locations); padding-left: 1rem; }
-[data-type="quotes"] { border-left: 3px solid var(--accent-quotes); padding-left: 1rem; }
-[data-type="notes"] { border-left: 3px solid var(--accent-notes); padding-left: 1rem; }
-[data-type="weather"] { border-left: 3px solid var(--accent-weather); padding-left: 1rem; }
-[data-type="work-published"] { border-left: 3px solid var(--accent-work); padding-left: 1rem; }
+/* ===================================
+   Content Type Styling
+   =================================== */
+[data-type="gratitude"] { 
+  border-left: 3px solid var(--accent-gratitude); 
+  padding-left: 1rem; 
+}
 
-/* Lists */
+[data-type="weather"] { 
+  border-left: 3px solid var(--accent-weather); 
+  padding-left: 1rem; 
+}
+
+[data-type="work-published"] { 
+  border-left: 3px solid var(--accent-work); 
+  padding-left: 1rem; 
+}
+
+[data-type="books"] { 
+  border-left: 3px solid var(--accent-books); 
+  padding-left: 1rem; 
+}
+
+[data-type="videos"] { 
+  border-left: 3px solid var(--accent-videos); 
+  padding-left: 1rem; 
+}
+
+[data-type="music"] { 
+  border-left: 3px solid var(--accent-music); 
+  padding-left: 1rem; 
+}
+
+[data-type="locations"] { 
+  border-left: 3px solid var(--accent-locations); 
+  padding-left: 1rem; 
+}
+
+[data-type="quotes"] { 
+  border-left: 3px solid var(--accent-quotes); 
+  padding-left: 1rem; 
+}
+
+[data-type="notes"] { 
+  border-left: 3px solid var(--accent-notes); 
+  padding-left: 1rem; 
+}
+
+/* ===================================
+   Weather Component
+   =================================== */
+.weather-info {
+  display: inline-block;
+}
+
+.weather-info .condition {
+  margin-right: 0.5rem;
+}
+
+.weather-info .temp::before {
+  content: "(";
+}
+
+.weather-info .temp::after {
+  content: ")";
+}
+
+/* ===================================
+   Lists
+   =================================== */
 ul {
   list-style: none;
 }
@@ -122,7 +193,9 @@ li::before {
   color: var(--fg-dim);
 }
 
-/* Links */
+/* ===================================
+   Links & Interactive Elements
+   =================================== */
 a {
   color: var(--fg-primary);
   text-decoration: underline;
@@ -132,13 +205,14 @@ a:hover {
   color: var(--accent-notes);
 }
 
-/* Metadata */
+/* ===================================
+   Typography Elements
+   =================================== */
 .meta {
   color: var(--fg-dim);
   font-size: 0.875rem;
 }
 
-/* Blockquotes */
 blockquote {
   margin: 1rem 0;
   padding-left: 1rem;
@@ -152,7 +226,9 @@ blockquote footer {
   margin-top: 0.5rem;
 }
 
-/* Archive navigation */
+/* ===================================
+   Archive Navigation
+   =================================== */
 .archive-month {
   margin-bottom: 2rem;
 }
@@ -187,7 +263,9 @@ blockquote footer {
   text-decoration: underline;
 }
 
-/* Footer */
+/* ===================================
+   Footer
+   =================================== */
 footer {
   border-top: 2px solid var(--gray);
 }
@@ -198,13 +276,14 @@ footer p {
   margin: 0.5rem 0;
 }
 
-/* Focus styles for accessibility */
+/* ===================================
+   Accessibility
+   =================================== */
 *:focus {
   outline: 2px solid var(--accent-books);
   outline-offset: 2px;
 }
 
-/* Skip to content link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -218,21 +297,4 @@ footer p {
 
 .skip-link:focus {
   top: 0;
-}
-
-/* Weather specific styles */
-.weather-info {
-  display: inline-block;
-}
-
-.weather-info .condition {
-  margin-right: 0.5rem;
-}
-
-.weather-info .temp::before {
-  content: "(";
-}
-
-.weather-info .temp::after {
-  content: ")";
 }
