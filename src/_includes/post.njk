@@ -12,6 +12,16 @@ layout: base.njk
   </div>
   {% endif %}
   
+  {% if weather %}
+  <div class="post-weather" data-type="weather">
+    <span class="icon">{{ weather.emoji or '🌤️' }}</span>
+    <div class="weather-info">
+      <span class="condition">{{ weather.condition }}</span>
+      <span class="temp">{{ weather.temp }}</span>
+    </div>
+  </div>
+  {% endif %}
+  
   {% if books %}
   <div class="post-books" data-type="books">
     <span class="icon">📚</span>
@@ -77,6 +87,20 @@ layout: base.njk
       <footer>— {{ quote.author }}, <cite>{{ quote.source }}</cite></footer>
     </blockquote>
     {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% if work_published %}
+  <div class="post-work-published" data-type="work-published">
+    <span class="icon">✍️</span>
+    <ul>
+      {% for work in work_published %}
+      <li>
+        {% if work.url %}<a href="{{ work.url }}">{% endif %}{{ work.title }}{% if work.url %}</a>{% endif %}
+        <span class="meta">({{ work.type }}{% if work.publication %}, {{ work.publication }}{% endif %})</span>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
   {% endif %}
   

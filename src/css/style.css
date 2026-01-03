@@ -10,6 +10,8 @@
   --accent-locations: #fe8019;
   --accent-quotes: #b8bb26;
   --accent-notes: #fb4934;
+  --accent-weather: #f9c74f;
+  --accent-work: #90be6d;
 }
 
 * {
@@ -103,6 +105,8 @@ h1 {
 [data-type="locations"] { border-left: 3px solid var(--accent-locations); padding-left: 1rem; }
 [data-type="quotes"] { border-left: 3px solid var(--accent-quotes); padding-left: 1rem; }
 [data-type="notes"] { border-left: 3px solid var(--accent-notes); padding-left: 1rem; }
+[data-type="weather"] { border-left: 3px solid var(--accent-weather); padding-left: 1rem; }
+[data-type="work-published"] { border-left: 3px solid var(--accent-work); padding-left: 1rem; }
 
 /* Lists */
 ul {
@@ -214,4 +218,21 @@ footer p {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Weather specific styles */
+.weather-info {
+  display: inline-block;
+}
+
+.weather-info .condition {
+  margin-right: 0.5rem;
+}
+
+.weather-info .temp::before {
+  content: "(";
+}
+
+.weather-info .temp::after {
+  content: ")";
 }
