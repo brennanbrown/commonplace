@@ -14,7 +14,7 @@
 - **Fast**: Static HTML, minimal CSS, instant loads
 - **Accessible**: WCAG 2.1 AA compliant, semantic HTML, keyboard navigation
 - **Private**: Your data lives in markdown files on your own computer/GitHub
-- **Extensible**: Track gratitude, books, videos, music, locations, quotes, and notes
+- **Extensible**: Track gratitude, weather, work published, books, videos, music, locations, quotes, and notes
 
 ## 🎨 Design Philosophy
 
@@ -60,6 +60,17 @@ title: 1 Jan 2025
 layout: ../_includes/post.njk
 gratitude: "The silence of early morning before anyone else is awake is precious."
 
+weather:
+  condition: "Partly Cloudy"
+  temp: "2°C"
+  emoji: "⛅"
+
+work_published:
+  - title: "Finding Beauty in the Ordinary"
+    type: "essay"
+    url: "https://example.com/essay"
+    publication: "Literary Journal"
+
 books:
   - title: "The Dispossessed"
     author: "Ursula K. Le Guin"
@@ -101,12 +112,14 @@ All fields are optional. Include only what you want to track:
 | Field | Type | Color | Icon |
 |-------|------|-------|------|
 | `gratitude` | Text | Yellow | 🙏 |
+| `weather` | Object | Teal | 🌤️ |
+| `work_published` | Array | Orange | ✍️ |
 | `books` | Array | Blue | 📚 |
 | `videos` | Array | Purple | 📺 |
 | `music` | Array | Green | 🎵 |
 | `locations` | Array | Red | 📍 |
 | `quotes` | Array | Aqua | 💬 |
-| `notes` | Array | Orange | 📝 |
+| `notes` | Array | Light Red | 📝 |
 
 ## 🏗️ Customization
 
@@ -131,12 +144,14 @@ The CSS uses CSS custom properties. Edit `src/css/style.css`:
   --bg: #282828;      /* Background */
   --fg: #ebdbb2;      /* Text */
   --yellow: #fabd2f;  /* Gratitude */
+  --teal: #7daea3;    /* Weather */
+  --orange: #d79921;  /* Work Published */
   --blue: #83a598;    /* Books */
   --purple: #d3869b;  /* Videos */
-  --green: #b8bb26;   /* Music */
-  --red: #fb4934;     /* Locations */
-  --aqua: #8ec07c;    /* Quotes */
-  --orange: #fe8019;  /* Notes */
+  --green: #8ec07c;   /* Music */
+  --red: #fe8019;     /* Locations */
+  --aqua: #b8bb26;    /* Quotes */
+  --light-red: #fb4934; /* Notes */
 }
 ```
 
