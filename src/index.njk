@@ -2,8 +2,15 @@
 layout: base.njk
 ---
 
-{% if collections.latest %}
-  {% set post = collections.latest[0] %}
+{% if collections.all %}
+  {% set posts = collections.all | reverse %}
+  {% set postPosts = [] %}
+  {% for item in posts %}
+    {% if item.data.date %}
+      {% set postPosts = postPosts.concat([item]) %}
+    {% endif %}
+  {% endfor %}
+  {% set post = postPosts[0] %}
   <article class="post">
     <time class="post-date"><a href="/{{ post.fileSlug }}/">{{ post.data.date | readableDate }}</a></time>
     
@@ -119,21 +126,17 @@ layout: base.njk
   </article>
 {% endif %}
 
-{% for month in collections.byMonth %}
-  <section class="archive-month">
-    <h2>{{ month.month }} {{ month.year }}</h2>
-    {% if month.posts %}
-    <ul class="archive-list">
-      {% for post in month.posts %}
-        {% if not (collections.latest and post.data.date == collections.latest[0].data.date) %}
-          <li>
-            <a href="/{{ post.fileSlug }}/">
-              <span class="archive-date">{{ post.data.date | date("%d %b") }}</span>{% if post.data.gratitude %}: {{ post.data.gratitude }}{% endif %}
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </section>
-{% endfor %}
+<section class="archive">
+  <h2>Previous Posts</h2>
+  <ul class="archive-list">
+    {% for post in postPosts %}
+      {% if not (post.data.date == postPosts[0].data.date) %}
+        <li>
+          <a href="/{{ post.fileSlug }}/">
+            <span class="archive-date">{{ post.data.date | readableDate }}</span>{% if post.data.gratitude %}: {{ post.data.gratitude }}{% endif %}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>

@@ -229,11 +229,11 @@ blockquote footer {
 /* ===================================
    Archive Navigation
    =================================== */
-.archive-month {
-  margin-bottom: 2rem;
+.archive {
+  margin-top: 3rem;
 }
 
-.archive-month h2 {
+.archive h2 {
   font-size: 1.125rem;
   font-weight: normal;
   margin-bottom: 1rem;
