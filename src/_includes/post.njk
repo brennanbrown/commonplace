@@ -71,8 +71,7 @@ layout: base.njk
       {% for movie in film %}
       <li>
         <cite>{{ movie.title }}</cite> ({{ movie.year }})
-        {% if movie.type %}<span class="meta">{{ movie.type }}</span>{% endif %}
-        {% if movie.platform %}<span class="meta">{{ movie.platform }}</span>{% endif %}
+        <span class="meta">{{ movie.type }}{% if movie.platform %}, {{ movie.platform }}{% endif %}</span>
       </li>
       {% endfor %}
     </ul>
