@@ -2,7 +2,7 @@
 
 > An ultra-minimalist Eleventy microblog for tracking daily gratitude, media consumption, and commonplace thoughts.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![11ty](https://img.shields.io/badge/11ty-v2.0.1-blue)](https://www.11ty.dev/)
 [![Netlify](https://img.shields.io/badge/Netlify-deployed-00C7B7)](https://www.netlify.com/)
 
